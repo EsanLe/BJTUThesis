@@ -11,11 +11,13 @@
 \newif\ifbjtu@doctor\bjtu@doctorfalse
 \newif\ifbjtu@review\bjtu@reviewfalse
 \newif\ifbjtu@submit\bjtu@submitfalse
+\newif\ifbjtu@professional\bjtu@professionalfalse
 \DeclareOption{bachelor}{\bjtu@bachelortrue}
 \DeclareOption{master}{\bjtu@mastertrue}
 \DeclareOption{doctor}{\bjtu@doctortrue}
 \DeclareOption{review}{\bjtu@reviewtrue}
 \DeclareOption{submit}{\bjtu@submittrue}
+\DeclareOption{professional}{\bjtu@professionaltrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 \LoadClass[a4paper,UTF8,scheme=chinese]{ctexbook}
@@ -509,32 +511,62 @@
 	\if@twoside
 	  %% 正文页眉页脚
 	  \fancypagestyle{main}{
-	    \fancyhead[LO, RE]{\small\songti\bjtu@value@school\bjtu@value@chinesedegree\bjtu@label@thesis}
-	    \fancyhead[RO]{\nouppercase{\small\songti\leftmark}}
-	    \fancyhead[LE]{\nouppercase{\small\songti\bjtu@value@titlemark}}
+	    \fancyhead[CE]{
+        \small\songti\bjtu@value@school
+        % 专硕
+        \ifbjtu@professional\relax
+          专业
+        \fi
+        \bjtu@value@chinesedegree\bjtu@label@thesis
+      }
+      \fancyhead[L]{}
+      \fancyhead[R]{}
+      \fancyhead[CO]{\nouppercase{\small\songti\leftmark}}
 	    \fancyfoot[C]{\small ~{\bfseries\thepage}~}
 	    \renewcommand{\headheight}{32pt}
 	  }
 	  %% 开章页页眉页脚
 	  \fancypagestyle{plain}{
 	    \fancyhf{}
-	    \fancyhead[LO,RE]{\nouppercase{\small\songti\bjtu@value@school\bjtu@value@chinesedegree\bjtu@label@thesis}}
-	    \fancyhead[RO]{\nouppercase{\small\songti\leftmark}}
-	    \fancyhead[LE]{\nouppercase{\small\songti\bjtu@value@titlemark}}
+	    \fancyhead[CE]{\nouppercase{
+        \small\songti\bjtu@value@school
+        % 专硕
+        \ifbjtu@professional\relax
+          专业
+        \fi
+        \bjtu@value@chinesedegree\bjtu@label@thesis
+      }}
+      \fancyhead[L]{}
+      \fancyhead[R]{}
+	    \fancyhead[CO]{\nouppercase{\small\songti\leftmark}}
 	    \fancyfoot[C]{\small ~{\bf\thepage}~}
 	    \renewcommand{\headheight}{32pt}
 	  }
 	\else
 	%% 正文页
 	\fancypagestyle{main}{
-	  \fancyhead[L]{\small\songti\bjtu@value@school\bjtu@value@chinesedegree\bjtu@label@thesis}
+	  \fancyhead[L]{
+      \small\songti\bjtu@value@school
+      % 专硕
+      \ifbjtu@professional\relax
+        专业
+      \fi
+      \bjtu@value@chinesedegree\bjtu@label@thesis
+    }
 	  \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
 	  \fancyfoot[C]{\small ~{\bf\thepage}~}
 	  \renewcommand{\headheight}{32pt}
 	}
 	\fancypagestyle{plain}{
 	  \fancyhf{}
-	  \fancyhead[L]{\nouppercase{\small\songti\bjtu@value@school\bjtu@value@chinesedegree\bjtu@label@thesis}}
+	  \fancyhead[L]{\nouppercase{
+      \small\songti\bjtu@value@school
+      % 专硕
+      \ifbjtu@professional\relax
+        专业
+      \fi
+      \bjtu@value@chinesedegree\bjtu@label@thesis
+    }}
 	  \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
 	  % \fancyhead[L]{\small {\it\bjtu@value@titlemark}}
 	  \fancyfoot[C]{\small ~{\bf\thepage}~}
