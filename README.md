@@ -5,7 +5,7 @@ BJTUThesis is an *unofficial* XeLaTeX template for preparing bachelor, master, o
 # 北京交通大学学位论文模板
 
 
-这是为撰写北京交通大学学士、硕士或博士论文而准备的 XeLaTeX 模板，非官方出品。生成的学位论文文件参见 [README.pdf][README]，欢迎大家分享使用经验。
+这是为撰写北京交通大学学士、硕士或博士论文而准备的 XeLaTeX 模板，非官方出品。生成的学位论文文件参见 [Demo](https://github.com/EiddleChen/BJTUThesis/raw/master/thesis.pdf)，欢迎大家分享使用经验。
 
 ## 如何使用
 
