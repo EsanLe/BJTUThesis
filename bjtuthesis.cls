@@ -512,7 +512,7 @@
 	    \fancyhead[LO, RE]{\small\songti\bjtu@value@school\bjtu@value@chinesedegree\bjtu@label@thesis}
 	    \fancyhead[RO]{\nouppercase{\small\songti\leftmark}}
 	    \fancyhead[LE]{\nouppercase{\small\songti\bjtu@value@titlemark}}
-	    \fancyfoot[C]{\small ---~{\bfseries\thepage}~---}
+	    \fancyfoot[C]{\small ~{\bfseries\thepage}~}
 	    \renewcommand{\headheight}{32pt}
 	  }
 	  %% 开章页页眉页脚
@@ -521,7 +521,7 @@
 	    \fancyhead[LO,RE]{\nouppercase{\small\songti\bjtu@value@school\bjtu@value@chinesedegree\bjtu@label@thesis}}
 	    \fancyhead[RO]{\nouppercase{\small\songti\leftmark}}
 	    \fancyhead[LE]{\nouppercase{\small\songti\bjtu@value@titlemark}}
-	    \fancyfoot[C]{\small ---~{\bf\thepage}~---}
+	    \fancyfoot[C]{\small ~{\bf\thepage}~}
 	    \renewcommand{\headheight}{32pt}
 	  }
 	\else
@@ -529,7 +529,7 @@
 	\fancypagestyle{main}{
 	  \fancyhead[L]{\small\songti\bjtu@value@school\bjtu@value@chinesedegree\bjtu@label@thesis}
 	  \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
-	  \fancyfoot[C]{\small ---~{\bf\thepage}~---}
+	  \fancyfoot[C]{\small ~{\bf\thepage}~}
 	  \renewcommand{\headheight}{32pt}
 	}
 	\fancypagestyle{plain}{
@@ -537,7 +537,7 @@
 	  \fancyhead[L]{\nouppercase{\small\songti\bjtu@value@school\bjtu@value@chinesedegree\bjtu@label@thesis}}
 	  \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
 	  % \fancyhead[L]{\small {\it\bjtu@value@titlemark}}
-	  \fancyfoot[C]{\small ---~{\bf\thepage}~---}
+	  \fancyfoot[C]{\small ~{\bf\thepage}~}
 	  \renewcommand{\headheight}{32pt}
 	}
 	\fi
