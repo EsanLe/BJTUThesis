@@ -1,0 +1,129 @@
+%# -*- coding: utf-8-unix -*-
+%%==================================================
+%% thesis.tex
+%%==================================================
+
+% 双面全文打印
+%\documentclass[master, fontset=adobe, openright, twoside, zihao=-4]{bjtuthesis}
+
+% 单面全文打印
+\documentclass[bachelor, fontset=adobe, openany, oneside, zihao=-4]{bjtuthesis}
+% \documentclass[master, adobefonts, review]{bjtuthesis} 
+% \documentclass[%
+%   bachelor|master|doctor,	% 必选项
+%   fontset=adobe|windows,  	% 只测试了adobe
+%   oneside|twoside,		% 单面打印，双面打印(奇偶页交换页边距，默认)
+%   openany|openright, 		% 可以在奇数或者偶数页开新章|只在奇数页开新章(默认)
+%   zihao=-4|5,, 		% 正文字号：小四、五号(默认)
+%   review,	 		% 盲审论文，隐去作者姓名、学号、导师姓名、致谢、发表论文和参与的项目
+%   submit			% 定稿提交的论文，插入签名扫描版的独创性声明、授权声明 
+% ]
+
+% 逐个导入参考文献数据库
+\addbibresource{bib/thesis.bib}
+% \addbibresource{bib/chap2.bib}
+
+\begin{document}
+
+%% 无编号内容：论文封面
+\include{tex/id}
+\makecover
+
+%% 无编号内容：授权页
+\makeatletter
+\ifbjtu@submit\relax
+	\includepdf{pdf/authorization.pdf}
+	\cleardoublepage
+\else
+	\makeDeclareAuthorization
+\fi
+
+%% 无编号内容：题名页
+\maketitle
+
+%% 无编号内容：致谢
+%% 盲审删去致谢页
+\ifbjtu@review\relax\else
+  \include{tex/ack}
+\fi
+\makeatother
+
+
+\frontmatter 	% 使用罗马数字对前言编号
+
+%% 摘要
+\pagestyle{main}
+\include{tex/abstract}
+
+%% 序言
+\pagestyle{main}
+\include{tex/introduction}
+
+%% 目录、插图目录、表格目录
+\tableofcontents
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename} %将插图目录加入全文目录
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}  %将表格目录加入全文目录
+% \listofalgorithms
+% \addcontentsline{toc}{chapter}{算法索引}        %将算法目录加入全文目录
+
+\include{tex/symbol} % 主要符号、缩略词对照表
+
+\mainmatter	% 使用阿拉伯数字对正文编号
+
+%% 正文内容
+\pagestyle{main}
+\include{tex/intro}
+\include{tex/example}
+\include{tex/faq}
+\include{tex/summary}
+
+\appendix	% 使用英文字母对附录编号，重新定义附录中的公式、图图表编号样式
+\renewcommand\theequation{\Alph{chapter}--\arabic{equation}}	
+\renewcommand\thefigure{\Alph{chapter}--\arabic{figure}}
+\renewcommand\thetable{\Alph{chapter}--\arabic{table}}
+\renewcommand\thealgorithm{\Alph{chapter}--\arabic{algorithm}}
+
+%% 参考资料
+\printbibliography[heading=bibintoc]
+
+%% 附录内容，本科学位论文可以用翻译的文献替代。
+\include{tex/app_setup}
+\include{tex/app_eq}
+\include{tex/app_cjk}
+\include{tex/app_log}
+
+\backmatter	% 文后无编号部分 
+
+%% 致谢、发表论文、申请专利、参与项目、简历
+%% 用于盲审的论文需隐去致谢、发表论文、申请专利、参与的项目
+\makeatletter
+
+% 盲审论文中，发表学术论文及参与科研情况等仅以第几作者注明即可，不要出现作者或他人姓名
+\ifbjtu@review\relax
+  %\include{tex/pubreview}
+  %\include{tex/projectsreview}
+  \include{tex/archivementsreview}
+\else
+  %\include{tex/pub}	      %% 发表论文
+  %\include{tex/projects}  %% 参与的项目
+  \include{tex/archivements}
+\fi
+
+% \include{tex/patents}	  %% 申请专利
+% \include{tex/resume}	  %% 个人简历
+
+%% 独创性声明
+\ifbjtu@submit\relax
+	\includepdf{pdf/original.pdf}
+	\cleardoublepage
+\else
+  \makeDeclareOriginal
+\fi
+
+%% 学位论文数据集
+\makeDataset
+
+\makeatletter
+\end{document}
