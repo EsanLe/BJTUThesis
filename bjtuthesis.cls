@@ -302,34 +302,23 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-  {\songti\zihao{-3}\bjtu@label@statement}
-  \vskip\stretch{1}
-  {\heiti\zihao{3}\bjtu@value@title}
-  \vskip\stretch{1}
-  {\fangsong\zihao{4}}
-  \def\tabcolsep{1pt}
-  \def\arraystretch{1.5}
-  \begin{tabular}{rl}
-    \ifbjtu@review
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@author\end{CJKfilltwosides} & \underline{\makebox[150pt]{}}\\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@studentnumber\end{CJKfilltwosides} & \underline{\makebox[150pt]{}} \\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@advisor\end{CJKfilltwosides}  & \underline{\makebox[150pt]{}} \\ 
-      \ifx\bjtu@value@coadvisor\undefined\else
-        \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@coadvisor\end{CJKfilltwosides} & \underline{\makebox[150pt]{}} \\ 
-      \fi
-    \else
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@author\end{CJKfilltwosides}	& \underline{\makebox[150pt]{\bjtu@value@author}} \\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@studentnumber\end{CJKfilltwosides} & \underline{\makebox[150pt]{\bjtu@value@studentnumber}} \\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@advisor\end{CJKfilltwosides} 	 & \underline{\makebox[150pt]{\bjtu@value@advisor}} \\ 
-      \ifx\bjtu@value@coadvisor\undefined\else
-        \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@coadvisor\end{CJKfilltwosides} 	 & \underline{\makebox[150pt]{\bjtu@value@coadvisor}} \\ 
-      \fi
-    \fi
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@major\end{CJKfilltwosides} 	 & \underline{\makebox[150pt]{\bjtu@value@major}} \\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@defenddate\end{CJKfilltwosides} 	 & \underline{\makebox[150pt]{\bjtu@value@defenddate}}
-  \end{tabular}
+  \vspace*{29.5pt}
+  \includegraphics[width=0.63025\textwidth]{figure/bjtubanner}
+  \vskip 30pt
+  {\songti\zihao{2}\textbf{\renewcommand{\CJKglue}{\hskip 5pt plus 0.08\baselineskip}\bjtu@label@statement}}
+  \vskip 60pt
+  {\songti\zihao{-3}\bjtu@value@title}
+  \vskip 29pt
+  {\songti\zihao{-3}\bjtu@value@englishtitle}
+  \vskip 90pt
+  {\songti\zihao{-3}作者:\bjtu@label@author}
+  \vskip 29pt
+  {\songti\zihao{-3}导师:\bjtu@label@advisor}
+  \vskip 100pt
+  {\songti\zihao{-3}\bjtu@value@school}
+  \vskip 29pt
+  {\songti\zihao{-3}\bjtu@value@defenddate}
   \end{center}
-  \vskip \stretch{0.5}
   \cleardoublepage
 }
 
@@ -513,11 +502,12 @@
 	  \fancypagestyle{main}{
 	    \fancyhead[CE]{
         \small\songti\bjtu@value@school
+        \bjtu@value@chinesedegree
         % 专硕
         \ifbjtu@professional\relax
           专业
         \fi
-        \bjtu@value@chinesedegree\bjtu@label@thesis
+        \bjtu@label@thesis
       }
       \fancyhead[L]{}
       \fancyhead[R]{}
@@ -530,11 +520,12 @@
 	    \fancyhf{}
 	    \fancyhead[CE]{\nouppercase{
         \small\songti\bjtu@value@school
+        \bjtu@value@chinesedegree
         % 专硕
         \ifbjtu@professional\relax
           专业
         \fi
-        \bjtu@value@chinesedegree\bjtu@label@thesis
+        \bjtu@label@thesis
       }}
       \fancyhead[L]{}
       \fancyhead[R]{}
@@ -547,11 +538,12 @@
 	\fancypagestyle{main}{
 	  \fancyhead[L]{
       \small\songti\bjtu@value@school
+      \bjtu@value@chinesedegree
       % 专硕
       \ifbjtu@professional\relax
         专业
       \fi
-      \bjtu@value@chinesedegree\bjtu@label@thesis
+      \bjtu@label@thesis
     }
 	  \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
 	  \fancyfoot[C]{\small ~{\bf\thepage}~}
@@ -561,11 +553,12 @@
 	  \fancyhf{}
 	  \fancyhead[L]{\nouppercase{
       \small\songti\bjtu@value@school
+      \bjtu@value@chinesedegree
       % 专硕
       \ifbjtu@professional\relax
         专业
       \fi
-      \bjtu@value@chinesedegree\bjtu@label@thesis
+      \bjtu@label@thesis
     }}
 	  \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
 	  % \fancyhead[L]{\small {\it\bjtu@value@titlemark}}
