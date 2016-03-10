@@ -49,7 +49,9 @@
 % Segment 1. Import LaTeX packages.
 %==========
 
-\RequirePackage[centering,a4paper,body={16cm,22cm}]{geometry} %设置版面
+% tmargin = 16mm + 5mm = 21mm, footskip = bottom - 15mm
+\RequirePackage[centering,a4paper,top=30mm,bottom=30mm,left=35mm,right=25mm,tmargin=21mm,footskip=10mm]{geometry} %设置版面
+
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
 \RequirePackage{fontspec}
@@ -310,11 +312,11 @@
   {\songti\zihao{-3}\bjtu@value@title}
   \vskip 29pt
   {\songti\zihao{-3}\bjtu@value@englishtitle}
-  \vskip 90pt
+  \vskip 130pt
   {\songti\zihao{-3}作者:\bjtu@label@author}
   \vskip 29pt
   {\songti\zihao{-3}导师:\bjtu@label@advisor}
-  \vskip 100pt
+  \vskip 130pt
   {\songti\zihao{-3}\bjtu@value@school}
   \vskip 29pt
   {\songti\zihao{-3}\bjtu@value@defenddate}
@@ -425,15 +427,14 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-  	{\bf\zihao{3} \bjtu@value@school}\\
   	{\bf\zihao{3} \bjtu@label@authorization}
   \end{center}
   \vskip 10pt
   {\par\zihao{-4}\bjtu@label@authorizationcontent\par}
-  \vskip 60pt
-  \bjtu@label@authorsign\hrulefill\hspace{3em}\bjtu@label@Supervisorsign\hrulefill
+  \vskip 105pt
+  \par\bjtu@label@authorsign\hfill\bjtu@label@Supervisorsign\hfill\hspace{2em}\par
   \vskip 15pt
-  \bjtu@label@originalDate\hfill\hspace{3em}\bjtu@label@originalDate
+  \par\bjtu@label@originalDate\hfill\hspace{2em}\bjtu@label@originalDate\par
   \cleardoublepage
 }
 
