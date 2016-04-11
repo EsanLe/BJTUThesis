@@ -49,8 +49,8 @@
 % Segment 1. Import LaTeX packages.
 %==========
 
-% tmargin = 16mm + 5mm = 21mm, footskip = bottom - 15mm
-\RequirePackage[centering,a4paper,top=30mm,bottom=30mm,left=35mm,right=25mm,tmargin=21mm,footskip=10mm]{geometry} %设置版面
+% tmargin = 16mm + 5mm = 21mm, bottom= 30mm + 1em(4mm), footskip = bottom - 15mm - 1em(4mm)
+\RequirePackage[centering,a4paper,top=30mm,bottom=34mm,left=35mm,right=25mm,tmargin=21mm,footskip=11mm]{geometry} %设置版面
 
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
@@ -413,8 +413,8 @@
   \vskip 40pt
   \hspace{2em}
   \bjtu@label@authorsign
-  \hrulefill
-  \hrulefill
+  \hfill
+  \hfill
   \hfill
   \bjtu@label@originalDate
   \hspace{1.5em}
