@@ -84,6 +84,8 @@
 % Segment 2. Define general-purpose LaTeX commands.
 %==========
 
+\CTEXsetup[name={,}]{chapter} % 去掉第*章
+\CTEXsetup[number={\arabic{chapter}}]{chapter} % 使用阿拉伯数字作为章序号
 \setcounter{secnumdepth}{4}  % 章节编号深度 (part 对应 -1)
 \setcounter{tocdepth}{2}     % 目录深度 (part 对应 -1)
     
@@ -122,6 +124,7 @@
 
 % Set the mainfont
 \setmainfont{TeX Gyre Termes}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimSun]{SimSun} % 强行指定斜体和粗体
 
 %% 行距缩放因子
 \linespread{1.3}
@@ -130,7 +133,7 @@
 % 名称：目录、表格索引、插图索引、算法、算法索引、代码
 \ctexset{contentsname={\bjtu@contentsname}}
 \ctexset{listfigurename={\bjtu@listfigurename}}
-\ctexset{listtablename={\bjtu@listtablename}}
+%\ctexset{listtablename={\bjtu@listtablename}}
 \floatname{algorithm}{\bjtu@label@algo}
 \renewcommand{\listalgorithmname}{\bjtu@listalgorithmname}
 \renewcommand{\lstlistingname}{\bjtu@value@listingname}
@@ -142,6 +145,19 @@
 	afterskip={12\p@},
 	}
 }
+
+\newcommand*\listoffiguresandtables{%
+  \chapter*{\listfigureandtablename}% 如果是 article 文档类，把 \chapter 换成 \section
+  \@mkboth{\MakeUppercase\listfigureandtablename}%
+          {\MakeUppercase\listfigureandtablename}%
+
+  \@starttoc{lof}%% 插图目录
+  %\bigskip       %% 目录间的距离，不需要的话可以删掉或者换其他内容
+  \@starttoc{lot}%% 表格目录
+}
+
+\newcommand*\listfigureandtablename{索引}
+
 % Title Settings at the section Level
 \ctexset{section={
 	format={\large\bfseries},
@@ -304,22 +320,22 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-  \vspace*{29.5pt}
-  \includegraphics[width=0.63025\textwidth]{figure/bjtubanner}
+  \vspace*{65.5pt}
+  \includegraphics[width=0.72025\textwidth]{figure/bjtubanner}
   \vskip 30pt
   {\songti\zihao{2}\textbf{\renewcommand{\CJKglue}{\hskip 5pt plus 0.08\baselineskip}\bjtu@label@statement}}
   \vskip 60pt
   {\songti\zihao{-3}\bjtu@value@title}
-  \vskip 29pt
+  \vskip 15pt
   {\songti\zihao{-3}\bjtu@value@englishtitle}
-  \vskip 130pt
-  {\songti\zihao{-3}作者:\bjtu@label@author}
-  \vskip 29pt
-  {\songti\zihao{-3}导师:\bjtu@label@advisor}
-  \vskip 130pt
-  {\songti\zihao{-3}\bjtu@value@school}
-  \vskip 29pt
-  {\songti\zihao{-3}\bjtu@value@defenddate}
+  \vskip\stretch{1}
+  {\songti\zihao{4}作者：\bjtu@label@author}
+  \vskip 20pt
+  {\songti\zihao{4}导师：\bjtu@label@advisor}
+  \vskip 100pt
+  {\songti\zihao{4}\bjtu@value@school}
+  \vskip 20pt
+  {\songti\zihao{4}\bjtu@value@defenddate}
   \end{center}
   \cleardoublepage
 }
@@ -330,34 +346,43 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-  {\songti\zihao{-3}\bjtu@label@statement}
-  \vskip\stretch{1}
-  {\heiti\zihao{3}\bjtu@value@title}
+    \vspace*{4pt}
+    \begin{tabular*}{\textwidth}{ @{}p{0.5\textwidth}  p{0.5\textwidth} }
+      \zihao{5}学校代码：100004 & \hfill\zihao{5}密级：公开
+    \end{tabular*}
+  \end{center}
+  \begin{center}
+  \vspace*{25pt}
+  {\kaishu\zihao{0}北京交通大学}
+  \vskip 11pt
+  {\songti\zihao{2}\textbf{\renewcommand{\CJKglue}{\hskip 5pt plus 0.08\baselineskip}\bjtu@label@statement}}
+  \vskip 45pt
+  {\songti\zihao{-3}\bjtu@value@title}
+  \vskip 15pt
+  {\songti\zihao{-3}\bjtu@value@englishtitle}
+  \vskip 62pt
+  \begin{tabular}{ @{}p{0.5\textwidth} p{0.5\textwidth}}
+    \zihao{4}作者姓名：\bjtu@label@author & \zihao{4}学~~~~~~~~号：\bjtu@label@studentnumber \\
+    & \\
+    \zihao{4}导师姓名：\bjtu@label@advisor & \zihao{4}职~~~~~~~~称：\bjtu@label@advisorjobtitle \\
+    & \\
+    \zihao{4}
+      \ifbjtu@professional\relax
+        工程\bjtu@value@chinesedegree 专业领域：\bjtu@label@major
+      \else
+        \bjtu@value@chinesedegree 专业领域：\bjtu@label@major
+      \fi
+       & \zihao{4}学位级别：\bjtu@value@chinesedegree  \\
+    & \\
+  \end{tabular}
   \vskip\stretch{1}
   {\fangsong\zihao{4}}
   \def\tabcolsep{1pt}
   \def\arraystretch{1.5}
-  \begin{tabular}{rl}
-    \ifbjtu@review
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@author\end{CJKfilltwosides} & \underline{\makebox[150pt]{}}\\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@studentnumber\end{CJKfilltwosides} & \underline{\makebox[150pt]{}} \\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@advisor\end{CJKfilltwosides}  & \underline{\makebox[150pt]{}} \\ 
-      \ifx\bjtu@value@coadvisor\undefined\else
-        \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@coadvisor\end{CJKfilltwosides} & \underline{\makebox[150pt]{}} \\ 
-      \fi
-    \else
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@author\end{CJKfilltwosides}	& \underline{\makebox[150pt]{\bjtu@value@author}} \\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@studentnumber\end{CJKfilltwosides} & \underline{\makebox[150pt]{\bjtu@value@studentnumber}} \\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@advisor\end{CJKfilltwosides} 	 & \underline{\makebox[150pt]{\bjtu@value@advisor}} \\ 
-      \ifx\bjtu@value@coadvisor\undefined\else
-        \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@coadvisor\end{CJKfilltwosides} 	 & \underline{\makebox[150pt]{\bjtu@value@coadvisor}} \\ 
-      \fi
-    \fi
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@major\end{CJKfilltwosides} 	 & \underline{\makebox[150pt]{\bjtu@value@major}} \\
-      \begin{CJKfilltwosides}{4em}\heiti\bjtu@label@defenddate\end{CJKfilltwosides} 	 & \underline{\makebox[150pt]{\bjtu@value@defenddate}}
-  \end{tabular}
+  {\songti\zihao{4}\bjtu@value@school}
+  \vskip 20pt
+  {\songti\zihao{4}\bjtu@value@defenddate}
   \end{center}
-  \vskip \stretch{0.5}
   \cleardoublepage
 }
 
@@ -427,6 +452,7 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
+    \vspace*{35pt}
   	{\bf\zihao{3} \bjtu@label@authorization}
   \end{center}
   \vskip 10pt
@@ -578,9 +604,9 @@
 
 % 中英文摘要
 \newenvironment{abstract}{\chapter*{\bjtu@label@abstract}\markboth{\bjtu@label@abstract}{}}{}
-\newcommand\keywords[1]{\vspace{2ex}\noindent{\bf\large \bjtu@label@keywords} #1}
+\newcommand\keywords[1]{\noindent{\bf\songti\zihao{-4} \bjtu@label@keywords} #1}
 \newenvironment{englishabstract}{\chapter*{\bfseries \bjtu@label@englishabstract}\markboth{\bjtu@label@englishabstract}{}}{}
-\newcommand\englishkeywords[1]{\vspace{2ex}\noindent{\bf\large \bjtu@label@englishkeywords} #1}
+\newcommand\englishkeywords[1]{\noindent{\bf\zihao{-4} \bjtu@label@englishkeywords} #1}
 
 \renewcommand\tableofcontents{%
   \chapter*{\contentsname}
@@ -698,6 +724,7 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
+    \vspace*{35pt}
     {\heiti\zihao{3}\bjtu@label@thanks}
   \end{center}
   {}

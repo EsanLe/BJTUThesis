@@ -67,14 +67,8 @@
 \pagestyle{main}
 \include{tex/introduction}
 
-%% 目录、插图目录、表格目录
+%% 目录
 \tableofcontents
-\listoffigures
-\addcontentsline{toc}{chapter}{\listfigurename} %将插图目录加入全文目录
-\listoftables
-\addcontentsline{toc}{chapter}{\listtablename}  %将表格目录加入全文目录
-% \listofalgorithms
-% \addcontentsline{toc}{chapter}{算法索引}        %将算法目录加入全文目录
 
 \include{tex/symbol} % 主要符号、缩略词对照表
 
@@ -82,6 +76,7 @@
 
 %% 正文内容
 \pagestyle{main}
+
 \include{tex/intro}
 \include{tex/example}
 \include{tex/faq}
@@ -103,6 +98,17 @@
 \include{tex/app_log}
 
 \backmatter	% 文后无编号部分 
+
+%% 目录、插图目录、表格目录
+\listoffiguresandtables
+\addcontentsline{toc}{chapter}{索引} %将插图和表格加入全文目录
+
+% \listoffigures
+% \addcontentsline{toc}{chapter}{\listfigurename} %将插图目录加入全文目录
+% \listoftables
+% \addcontentsline{toc}{chapter}{\listtablename}  %将表格目录加入全文目录
+% \listofalgorithms
+% \addcontentsline{toc}{chapter}{算法索引}        %将算法目录加入全文目录
 
 %% 致谢、发表论文、申请专利、参与项目、简历
 %% 用于盲审的论文需隐去致谢、发表论文、申请专利、参与的项目
