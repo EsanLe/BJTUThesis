@@ -308,6 +308,7 @@
   \def\bjtu@value@titlemark{\MakeUppercase{#1}}}
 \renewcommand\author[1]{\def\bjtu@value@author{#1}}
 \newcommand\advisor[1]{\def\bjtu@value@advisor{#1}}
+\newcommand\advisorjobtitle[1]{\def\bjtu@value@advisorjobtitle{#1}}
 \newcommand\coadvisor[1]{\def\bjtu@value@coadvisor{#1}}
 \newcommand\major[1]{\def\bjtu@value@major{#1}}
 \newcommand\submitdate[1]{\def\bjtu@value@submitdate{#1}}
@@ -329,9 +330,9 @@
   \vskip 15pt
   {\songti\zihao{-3}\bjtu@value@englishtitle}
   \vskip\stretch{1}
-  {\songti\zihao{4}作者：\bjtu@label@author}
+  {\songti\zihao{4}作者：\bjtu@value@author}
   \vskip 20pt
-  {\songti\zihao{4}导师：\bjtu@label@advisor}
+  {\songti\zihao{4}导师：\bjtu@value@advisor}
   \vskip 100pt
   {\songti\zihao{4}\bjtu@value@school}
   \vskip 20pt
@@ -362,15 +363,15 @@
   {\songti\zihao{-3}\bjtu@value@englishtitle}
   \vskip 62pt
   \begin{tabular}{ @{}p{0.5\textwidth} p{0.5\textwidth}}
-    \zihao{4}作者姓名：\bjtu@label@author & \zihao{4}学~~~~~~~~号：\bjtu@label@studentnumber \\
+    \zihao{4}作者姓名：\bjtu@value@author & \zihao{4}学~~~~~~~~号：\bjtu@value@studentnumber \\
     & \\
-    \zihao{4}导师姓名：\bjtu@label@advisor & \zihao{4}职~~~~~~~~称：\bjtu@label@advisorjobtitle \\
+    \zihao{4}导师姓名：\bjtu@value@advisor & \zihao{4}职~~~~~~~~称：\bjtu@value@advisorjobtitle \\
     & \\
     \zihao{4}
       \ifbjtu@professional\relax
-        工程\bjtu@value@chinesedegree 专业领域：\bjtu@label@major
+        工程\bjtu@value@chinesedegree 专业领域：\bjtu@value@major
       \else
-        \bjtu@value@chinesedegree 专业领域：\bjtu@label@major
+        \bjtu@value@chinesedegree 专业领域：\bjtu@value@major
       \fi
        & \zihao{4}学位级别：\bjtu@value@chinesedegree  \\
     & \\
