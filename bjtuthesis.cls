@@ -84,8 +84,6 @@
 % Segment 2. Define general-purpose LaTeX commands.
 %==========
 
-\CTEXsetup[name={,}]{chapter} % 去掉第*章
-\CTEXsetup[number={\arabic{chapter}}]{chapter} % 使用阿拉伯数字作为章序号
 \setcounter{secnumdepth}{4}  % 章节编号深度 (part 对应 -1)
 \setcounter{tocdepth}{2}     % 目录深度 (part 对应 -1)
     
@@ -139,8 +137,10 @@
 \renewcommand{\lstlistingname}{\bjtu@value@listingname}
 % Title Settings at the chapter Level
 \ctexset{chapter={
-	nameformat={\Large\bfseries},
-	titleformat={\Large\bfseries},
+  name={,},
+  number={\arabic{chapter}},
+  nameformat={\zihao{3}\bfseries},
+  titleformat={\zihao{3}\bfseries},
 	beforeskip={15\p@},
 	afterskip={12\p@},
 	}
@@ -160,13 +160,13 @@
 
 % Title Settings at the section Level
 \ctexset{section={
-	format={\large\bfseries},
+	format={\zihao{-3}\bfseries},
 	afterskip={1.0ex \@plus .2ex},
 	}
 }
 % Title Settings at the subection Level
 \ctexset{subsection={
-	format={\bfseries\normalsize},
+  format={\zihao{4}\bfseries},
 	indent={0\ccwd},
 	afterskip={1.0ex \@plus .2ex},
 	}
@@ -741,5 +741,6 @@
 
 %%
 %% End of file `bjtuthesis.cls'.
+
 
 
