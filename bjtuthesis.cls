@@ -79,7 +79,6 @@
 \RequirePackage{siunitx}
 \RequirePackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
-\RequirePackage{longtable}
 
 %==========
 % Segment 2. Define general-purpose LaTeX commands.
@@ -506,10 +505,6 @@
 }
 
 % fancyhdr页眉页脚设置
-
-% 不显示页眉中的编号
-\pagestyle{fancy}\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
-
 \ifbjtu@bachelor
 	% 本科学位论文页眉页脚设置
 	%% 正文页眉页脚
@@ -593,7 +588,7 @@
       \fi
       \bjtu@label@thesis
     }}
-    \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
+	  \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
 	  % \fancyhead[L]{\small {\it\bjtu@value@titlemark}}
 	  \fancyfoot[C]{\small ~{\bf\thepage}~}
 	  \renewcommand{\headheight}{32pt}
@@ -743,10 +738,6 @@
 \newenvironment{symbolnote}{\chapter{\bjtu@label@symbolnote}}{} 
 
 \endinput
-
-% Configure longtable
-\setlength{\LTpre}{-1em}
-\setlength{\LTpost}{1em}
 
 %%
 %% End of file `bjtuthesis.cls'.
