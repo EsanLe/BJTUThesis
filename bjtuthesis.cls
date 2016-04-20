@@ -744,6 +744,10 @@
 
 \endinput
 
+% Configure longtable
+\setlength{\LTpre}{-1em}
+\setlength{\LTpost}{1em}
+
 %%
 %% End of file `bjtuthesis.cls'.
 
