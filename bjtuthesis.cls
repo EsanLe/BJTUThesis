@@ -64,6 +64,7 @@
 \RequirePackage{upgreek}
 \RequirePackage{graphicx}
 \RequirePackage{subfigure}
+\RequirePackage{longtable}
 \RequirePackage{ccaption}
 \RequirePackage[backend=biber, style=caspervector,utf8, bibencoding=utf8, sorting=none]{biblatex}
 \RequirePackage{xcolor}
@@ -435,6 +436,7 @@
 \newcommand\makeDeclareOriginal{%
   \cleardoublepage
   \chapter*{\bjtu@label@original\markboth{\bjtu@label@original}{}}
+  \addcontentsline{toc}{chapter}{\bjtu@label@original} %加入全文目录
   {\par\zihao{-4}\bjtu@label@originalcontent\par}
   \vskip 40pt
   \hspace{2em}
@@ -469,6 +471,7 @@
 \newcommand\makeDataset{%
   \cleardoublepage
   \chapter*{\bjtu@label@dataset\markboth{\bjtu@label@dataset}{}}
+  \addcontentsline{toc}{chapter}{\bjtu@label@dataset} %加入全文目录
   %\vskip 10pt
   \begin{center}
     \begin{table}[!hpb]
@@ -505,6 +508,10 @@
 }
 
 % fancyhdr页眉页脚设置
+
+% 不显示页眉中的编号
+\pagestyle{fancy}\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+
 \ifbjtu@bachelor
 	% 本科学位论文页眉页脚设置
 	%% 正文页眉页脚
@@ -588,7 +595,7 @@
       \fi
       \bjtu@label@thesis
     }}
-	  \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
+    \fancyhead[R]{\nouppercase{\small\songti\leftmark}}
 	  % \fancyhead[L]{\small {\it\bjtu@value@titlemark}}
 	  \fancyfoot[C]{\small ~{\bf\thepage}~}
 	  \renewcommand{\headheight}{32pt}
