@@ -277,6 +277,43 @@ i,j作为虚数单位时，也应该使用“直立体”为了明显，还加�
   \end{threeparttable}
 \end{table}
 
+% Start of longtable example(Beta)
+% FIXME workaround of continue tables
+\newcounter{continuetablecaptioncounter}
+\newcommand{\continuetablecaption}[2] {
+  \multicolumn{3}{r}{\zihao{5} 表 \arabic{chapter}–\arabic{continuetablecaptioncounter} #1 （续表）} \\
+  \multicolumn{3}{r}{\zihao{5} Table \arabic{chapter}–\arabic{continuetablecaptioncounter} #2 (continue)}
+}
+
+% Configure longtable
+\setlength{\LTpre}{1em}
+\setlength{\LTpost}{1em}
+
+\refstepcounter{continuetablecaptioncounter}
+\begin{longtable}{c|c|p{24em}}
+  \longbicaption{}{学生主页功能性需求}{Table \arabic{chapter}–\arabic{continuetablecaptioncounter}}{Students homepage functional requirements}
+  \hline
+  \multicolumn{1}{c|}{功能名称} &  \multicolumn{1}{c|}{操作权限} & \multicolumn{1}{p{24em}}{\centering 功能描述} \\ \hline 
+  \endfirsthead
+
+  \continuetablecaption{学生主页功能性需求}{Students homepage functional requirements}
+  \hline
+  \multicolumn{1}{c|}{功能名称} &  \multicolumn{1}{c|}{操作权限} & \multicolumn{1}{p{24em}}{\centering 功能描述} \\ \hline 
+  \endhead
+
+  \endfoot
+
+  \hline
+  \endlastfoot
+  我的书架 & 学生 & 展示当前登录学生的书架信息，首先展示已读书的数量，然后展示未读书的数量：未读书中又分为必读书和选读书。\\ \hline
+  我的测试 & 学生 & 展示当前登录学生通过验证的图书的封面、书名，通过时间、正确率、成绩，并提供做笔记按钮，只显示前三条，点击更多会跳转到读书测试页面，分页展示当前用户的认证历史。\\ \hline
+  我的笔记 & 学生 & 展示当前登录学生已经做过笔记的封面、书名、笔记名、作者，以及笔记的评论人数，并且只显示前三条，点击更多会跳转到我的笔记页面，分页展示当前用户所做笔记的情况。\\ \hline
+  正在发生 & 学生 & 展示系统中关于本校的动态信息。\\ \hline
+  阅读达人 & 学生 & 学生可以通过阅读达人查看学校中阅读能力排名前四的同学，点击更多按钮可显示更多阅读达人，以及他们阅读的情况。\\ \hline 
+  热门笔记 & 学生 & 学生可以通过热门笔记查看比较受欢迎的笔记，以及每个笔记的评价人数，只显示前四条记录；点击更多会将更多热门的笔记进行分页展示，并展示相应笔记评论的人数，以及每个笔记评论记录的前三条。\\
+\end{longtable}
+
+$% End of long longtable example(Beta)
 \section{参考文献管理}
 
  \LaTeX 具有将参考文献内容和表现形式分开管理的能力，涉及三个要素：参考文献数据库、参考文献引用格式、在正文中引用参考文献。
