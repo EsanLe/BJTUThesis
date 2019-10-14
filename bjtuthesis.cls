@@ -350,7 +350,7 @@
   \begin{center}
     \vspace*{4pt}
     \begin{tabular*}{\textwidth}{ @{}p{0.5\textwidth}  p{0.5\textwidth} }
-      \zihao{5}学校代码：100004 & \hfill\zihao{5}密级：公开
+      \zihao{5}学校代码：10004 & \hfill\zihao{5}密级：公开
     \end{tabular*}
   \end{center}
   \begin{center}
